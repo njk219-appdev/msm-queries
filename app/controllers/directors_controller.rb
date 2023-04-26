@@ -7,6 +7,10 @@ class DirectorsController < ApplicationController
     @oldest = Director.where.not({ :dob => nil}).order({:dob => :asc}).at(0)
     render({:template => "directors_template/eldest.html.erb"})
   end
+  def youngest
+    @youngest = Director.where.not({ :dob => nil}).order({:dob => :desc}).at(0)
+    render({:template => "directors_template/youngest.html.erb"})
+  end
   def director_details
     #params looks like {"an_id"="42"}
 
